@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Only god forgives",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor justo, porta quis massa sit amet, dignissim consequat ex. Fusce tempus laoreet justo, sed ornare ipsum luctus a. Sed elementum quam felis, in fringilla erat convallis quis. Vivamus tempus ultrices maximus.",
+    "img": ["img/movies/ogf.jpg", "img/movies/ogf2.jpg"]
+  },
+  {
+    "name": "Deus ex machina",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor justo, porta quis massa sit amet, dignissim consequat ex. Fusce tempus laoreet justo, sed ornare ipsum luctus a. Sed elementum quam felis, in fringilla erat convallis quis. Vivamus tempus ultrices maximus.",
+    "img": ["img/movies/deuxex.jpg", "img/movies/deusex2.jpg"]
+  },
+  {
+    "name": "Battle Royale",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor justo, porta quis massa sit amet, dignissim consequat ex. Fusce tempus laoreet justo, sed ornare ipsum luctus a. Sed elementum quam felis, in fringilla erat convallis quis. Vivamus tempus ultrices maximus.",
+    "img": ["img/movies/Battle_Royale.jpg", "img/movies/br2.jpg"]
+  }
+]

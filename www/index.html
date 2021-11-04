@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <link rel="manifest" href="manifest.json" />
+        <script>
+            window.addEventListener("load", () => {
+                if ("cordova" in window) {
+                } else {
+                    if ("serviceWorker" in navigator) {
+                        navigator.serviceWorker
+                            .register("sw.js", { scope: "./" })
+                            .then(function (reg) {});
+                    }
+                    let OneSignal = window.OneSignal || [];
+                    let initConfig = {
+                        appId: "7c99eb7e-050a-4fda-a9fe-0a3f1091f899",
+                        notifyButton: {
+                            enable: true,
+                        },
+                    };
+                    OneSignal.push(function () {
+                        OneSignal.SERVICE_WORKER_PARAM = { scope: "push/onesignal/" };
+                        OneSignal.SERVICE_WORKER_PATH =
+                            "push/onesignal/OneSignalSDKWorker.js";
+                        OneSignal.SERVICE_WORKER_UPDATER_PATH =
+                            "push/onesignal/OneSignalSDKUpdaterWorker.js";
+                        OneSignal.init(initConfig);
+                    });
+                }
+            });
+        </script>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <title>Ynov Web Dev Mobile</title>
+    </head>
+        <body>
+        <nav onclick="showHome()" class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.png"  alt="logo"/>Ynov Dev Web Mobile
+                </a>
+            </div>
+        </nav>
+        <main class="container-fluid">
+            <div id="home">
+                <div class="row">
+                    <div class="col">
+                        <h1>Top movies</h1>
+                    </div>
+                </div>
+                <div class="row" id="list"></div>
+                <div onclick="showForm(true)" class="fab"> + </div>
+            </div>
+            <div id="form">
+                <h2 class="form-title">Add a movie</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="inputTitle">Title</label>
+                        <input id="inputTitle" name='inputTitle' type="text" class="form-control m-input" placeholder="Enter title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescription">Description</label>
+                        <input id="inputDescription" name='inputDescription' type="text" class="form-control m-input" placeholder="Enter description" required>
+                    </div>
+                    <div id="url-container">
+                        <div class="form-group">
+                            <label for="imageMovie">Image URL</label>
+                            <input id="imageMovie" name="imageMovie" type="text" class="form-control m-input imageMovie" placeholder="Enter URL" required>
+                        </div>
+                    </div>
+                    <button type="button" onclick="newURL()" class="btn btn-primary">Add URL</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div id="details">
+                <div class="card">
+                    <div id="carousel" class="carousel slide card-img-top" data-ride="carousel">
+                        <div class="carousel-inner" id="carousel-inner">
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon icon-black" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon icon-black" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <span class="card-header" id="detailsTitle"></span>
+                    <p class="card-text" id="detailsDescription"></p>
+                </div>
+                <button onclick="showDetails(false)" type="button" class="btn btn-home btn-primary">Home</button>
+            </div>
+        </main>
+        <script src="js/index.js"></script>
+        <script type="text/javascript" src="js/native.js"></script>
+        <script type="text/javascript" src="js/movies.js"></script>
+        </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ynov.tp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>TpCordova</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon src="www/img/logo.png" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="StatusBarBackgroundColor" value="#0080ff" />
+    <preference name="SplashScreenBackgroundColor" value="0xFFFFFFFF" />
+    <preference name="loadUrlTimeoutValue" value="60000" />
+    <platform name="android">
+        <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+        <allow-intent href="market:*" />
+        <splash src="www/img/logos/splash-hdpi.png" density="hdpi" />
+        <splash src="www/img/logos/splash-ldpi.png" density="ldpi" />
+        <splash src="www/img/logos/splash-mdpi.png" density="mdpi" />
+        <splash src="www/img/logos/splash-xhdpi.png" density="xhdpi" />
+        <splash src="www/img/logos/splash-xxhdpi.png" density="xxhdpi" />
+        <splash src="www/img/logos/splash-xxxhdpi.png" density="xxxhdpi" />
+    </platform>
+    <platform name="browser">
+        <preference name="SplashScreen" value="www/img/logos/144x144.png" />
+    </platform>
+</widget>
